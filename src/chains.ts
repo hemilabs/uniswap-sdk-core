@@ -22,7 +22,7 @@ export enum ChainId {
   ZORA_SEPOLIA = 999999999,
   ROOTSTOCK = 30,
   BLAST = 81457,
-  HEMI = 43_111,
+  // HEMI = 43_111,
   HEMI_SEPOLIA = 743_111
 }
 
