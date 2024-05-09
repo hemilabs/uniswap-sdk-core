@@ -1,5 +1,7 @@
 import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from './chains'
 
+type AddressMap = { [chainId: number]: string }
+
 type ChainAddresses = {
   v3CoreFactoryAddress: string
   multicallAddress: string
@@ -41,6 +43,16 @@ export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses>
   [ChainId.HEMI_SEPOLIA]: HEMI_SEPOLIA_ADDRESSES
 }
 
+
+export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    const nonfungiblePositionManagerAddress = CHAIN_TO_ADDRESSES_MAP[chainId].nonfungiblePositionManagerAddress
+    if (nonfungiblePositionManagerAddress) {
+      memo[chainId] = nonfungiblePositionManagerAddress
+    }
+    return memo
+  }, {})
+}
 
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number) => {
   if (SUPPORTED_CHAINS.includes(chainId)) {
