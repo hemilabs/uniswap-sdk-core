@@ -7,6 +7,9 @@ on:
 jobs:
   run-linters:
     name: Run linters
+    permissions:
+      checks: write
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
